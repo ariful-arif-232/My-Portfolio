@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring } from "motion/react";
 import { ArrowUp, Download, ExternalLink, Mail, Menu, Moon, Send, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import Image from "next/image";
