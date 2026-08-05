@@ -72,7 +72,17 @@ export const portfolio = {
     { name: "Git", level: 70, category: "Tools" },
     { name: "Figma", level: 76, category: "Tools" },
   ] as Skill[],
-  projects: [] as Project[],
+  projects: [
+    {
+      title: "TTT Outfit",
+      description: "TTT Outfit is a modern fashion e-commerce website designed to showcase clothing products with a clean, responsive, and user-friendly shopping experience.",
+      image: "/assets/projects/ttt-outfit.png",
+      github: "https://github.com/ariful-arif-232/ttt-outfit",
+      live: "https://tttoutfit.bd",
+      technologies: ["Node.js", "Express", "MongoDB", "Mongoose", "EJS", "Cloudinary"],
+      featured: true,
+    },
+  ] as Project[],
   experience: [
     {
       role: "Web Developer & Graphics Designer",
