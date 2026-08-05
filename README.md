@@ -1,139 +1,149 @@
-# Md. Ariful Islam — Premium Portfolio
+# Md. Ariful Islam — Developer Portfolio
 
-A modern personal portfolio website for **Md. Ariful Islam**, built with **Next.js 15**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**. It includes responsive sections for hero, about, education, services, skills, projects, experience, contact, and footer.
+A premium, modern portfolio for **Md. Ariful Islam** built with **Next.js 15**, **TypeScript**, **Tailwind CSS 4**, and **Framer Motion**. The design focuses on clean whitespace, strong typography, subtle motion, responsive layouts, accessible controls, and centralized editable content.
 
 ## Features
 
-- Premium responsive UI for mobile, tablet, and desktop
-- Dark/light mode with system preference support
-- Smooth scroll and reveal animations powered by Framer Motion
-- SEO-friendly metadata in the Next.js app router
-- Active navigation, loading animation, and back-to-top button
-- Contact form UI ready for backend/service integration
-- Download CV button with a replaceable placeholder file
-- Social icons for GitHub, LinkedIn, Facebook, and Email
-- Centralized personal data configuration
-
-## Tech Stack
-
-- Next.js 15
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- Framer Motion
-- next-themes
-- lucide-react
+- Split hero section with profile image fallback, availability badge, CTAs, and social links
+- Professional about section with timeline cards for education and current learning
+- Filterable skills with premium progress indicators
+- Project cards with thumbnails, technology badges, GitHub links, live demo links, and featured sorting
+- Experience timeline, services cards, modern contact card, and minimal footer
+- SEO metadata, OpenGraph/Twitter cards, and structured `Person` JSON-LD
+- Lazy-loaded project images and optimized Next.js image handling
+- Dark/light theme support
 
 ## Getting Started
 
-Install dependencies:
-
 ```bash
 npm install
-```
-
-Run the development server:
-
-```bash
 npm run dev
 ```
 
-Build for production:
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-```bash
-npm run build
-```
-
-Run lint checks:
+Useful commands:
 
 ```bash
 npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+## Edit Portfolio Content
 
-## Updating Personal Information
-
-All editable portfolio data lives in:
+All editable site content lives in:
 
 ```text
 data/portfolio.ts
 ```
 
-Update this file to change:
+Use this file to update your name, title, bio, intro, location, email, availability, services, timeline, skills, projects, experience, and social links.
 
-- Name, title, bio, location, email
-- Education
-- Services
-- Experience
-- Social links
-- Skills placeholders
-- Projects placeholders
-- Resume link
-- Profile image path
+## Replace the Profile Photo
 
-## Updating Skills and Projects
+The site automatically tries to load:
 
-Add skills and projects directly in `data/portfolio.ts`:
+```text
+public/assets/profile.jpg
+```
+
+To add your real profile photo:
+
+1. Add your image to `public/assets/`.
+2. Name it `profile.jpg`.
+3. Keep this value in `data/portfolio.ts`:
 
 ```ts
-skills: [
-  { name: "React", level: 90, category: "Frontend" },
-]
+profile: {
+  image: "/assets/profile.jpg",
+  fallback: "/assets/profile-placeholder.svg",
+  alt: "Portrait of Md. Ariful Islam",
+}
 ```
+
+If `profile.jpg` is missing or fails to load, the portfolio displays `public/assets/profile-placeholder.svg` automatically.
+
+## Upload the CV / Resume
+
+The CV button points to:
+
+```text
+public/assets/md-ariful-islam-cv.pdf
+```
+
+To upload your resume:
+
+1. Add your PDF to `public/assets/`.
+2. Name it `md-ariful-islam-cv.pdf`.
+3. Or update `resumeUrl` in `data/portfolio.ts` if you prefer a different filename.
+
+```ts
+resumeUrl: "/assets/md-ariful-islam-cv.pdf"
+```
+
+## Add Projects
+
+Projects are stored in `data/portfolio.ts` and support these fields:
 
 ```ts
 projects: [
   {
     title: "Project Name",
-    description: "Short project summary.",
-    href: "https://example.com",
-    tags: ["Next.js", "Tailwind CSS"],
+    description: "A short, honest summary of the project.",
+    image: "/assets/project-name.jpg",
+    github: "https://github.com/your-username/project-name",
+    live: "https://project-name.example.com",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    featured: true,
   },
 ]
 ```
 
-## Replacing Profile Photo
+Notes:
 
-The current placeholder image is:
+- Set `featured: true` to move a project toward the top.
+- Store thumbnails in `public/assets/` and reference them with `/assets/file-name.jpg`.
+- Do not add placeholder companies or fake projects; leave the array empty until real work is ready.
 
-```text
-public/assets/profile-placeholder.svg
-```
+## Add Skills
 
-To replace it, either:
-
-1. Upload your own image with the same filename, or
-2. Add a new image to `public/assets` and update `profile.image` in `data/portfolio.ts`.
-
-Example:
+Skills are also stored in `data/portfolio.ts`:
 
 ```ts
-profile: {
-  image: "/assets/my-photo.jpg",
-  alt: "Portrait of Md. Ariful Islam",
+skills: [
+  { name: "React", level: 80, category: "Frontend" },
+  { name: "Figma", level: 75, category: "Tools" },
+]
+```
+
+The UI creates category filters automatically from the `category` values.
+
+## Change Social Links
+
+Update the `socials` object in `data/portfolio.ts`:
+
+```ts
+socials: {
+  github: "https://github.com/your-username",
+  linkedin: "https://linkedin.com/in/your-username",
+  facebook: "https://facebook.com/your-username",
+  email: "mailto:arifwahid2020@gmail.com",
 }
 ```
-
-## Replacing Resume/CV
-
-The placeholder resume is:
-
-```text
-public/assets/resume-placeholder.pdf
-```
-
-Replace it with your actual CV PDF using the same filename, or update `resumeUrl` in `data/portfolio.ts`.
 
 ## Project Structure
 
 ```text
-app/                  Next.js app router pages and global styles
-components/           Reusable React components
-data/portfolio.ts     Single source of truth for personal content
-public/assets/        Replaceable profile image and resume assets
+app/                  Next.js app router files and global styles
+components/           Portfolio UI components and theme provider
+data/portfolio.ts     Single source of truth for portfolio content
+public/assets/        Profile photo, CV, thumbnails, and static assets
 ```
 
 ## Deployment
 
-This project is ready for deployment to platforms such as Vercel, Netlify, or any Node.js hosting provider that supports Next.js.
+Deploy to Vercel, Netlify, or any platform that supports Next.js. For accurate canonical metadata, set:
+
+```text
+NEXT_PUBLIC_SITE_URL=https://your-domain.com
+```
