@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+.dark body { background: #020617; color: #e2e8f0; }
+::selection { background: #14b8a6; color: white; }
+
+.glass {
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(22px);
+  border: 1px solid rgba(148,163,184,.22);
+}
+.dark .glass { background: rgba(15,23,42,.68); border-color: rgba(148,163,184,.14); }
+.section { scroll-margin-top: 96px; }
+.gradient-text { background: linear-gradient(135deg,#14b8a6,#6366f1,#ec4899); -webkit-background-clip: text; background-clip: text; color: transparent; }
