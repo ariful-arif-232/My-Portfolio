@@ -105,6 +105,22 @@ Notes:
 - Store thumbnails in `public/assets/` and reference them with `/assets/file-name.jpg`.
 - Do not add placeholder companies or fake projects; leave the array empty until real work is ready.
 
+## Replace the TTT Outfit Project Image
+
+The TTT Outfit project currently points to:
+
+```text
+public/assets/projects/ttt-outfit.png
+```
+
+To replace or add the real project thumbnail:
+
+1. Create the `public/assets/projects/` folder if it does not already exist.
+2. Upload the image file there.
+3. Name it `ttt-outfit.png`, or update the `image` value for the TTT Outfit project in `data/portfolio.ts` if you prefer another filename.
+
+If the image file is missing, the project card displays a clean placeholder that tells you where to upload the thumbnail.
+
 ## Add Skills
 
 Skills are also stored in `data/portfolio.ts`:
